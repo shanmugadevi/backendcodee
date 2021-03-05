@@ -1,11 +1,14 @@
-from django.urls import path
-from . import views
+from django.conf.urls import url
+from todo import api
 
 urlpatterns = [
-    path('', views.eventlist, name="Event"),
-    path('get/<str:pk>', views.eventDetail, name='get'),
-    path('tutorials', views.eventcreate, name='tutorials'),
-    path('eventupdate/<str:pk>', views.taskUpdate, name='eventupdate'),
-    path('task/<str:pk>', views. taskDelete, name='task'),
+    #GET, POST, DELETE
+    url('tutorials', api.tutorial_list),
 
+    #GET, PUT, DELETE
+    url('tutorials/<int:id>', api.update_tutorials),
+    url('tutorials/<int:id>', api.delete_tutorials),
+
+    #GET
+    url('tutorials/published', api.tutorial_list_published),
 ]
